@@ -1,0 +1,58 @@
+<html>
+  <title>Stroboscope</title>
+<head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
+
+<style>
+  
+@keyframes blinking {
+  100% {
+    background-color: #fff;
+
+  }
+  100% {
+    background-color: #000;
+
+  }
+}
+
+body {
+
+  /* NAME | TIME | ITERATION */
+  animation: blinking 0.36s infinite;
+  font-family: 'Roboto Mono', monospace;
+	  font-size: xx-large;
+}
+  
+.box.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  padding: .5rem;
+  height: 100vh;
+
+}
+
+.box p {
+  /*max-width: 300px;*/
+  text-align: center;
+  margin: .25rem;
+  padding: .25rem;
+}
+
+</style>
+</head>
+<body>
+  
+<div class="box flex">
+  <p>
+ZÄHNE PUTZEN, PULLERN UND AB INS BETT!
+  </p>
+</div>
+      
+</body>
+</html>
