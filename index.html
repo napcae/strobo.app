@@ -1,58 +1,114 @@
 <html>
-  <title>Stroboscope</title>
+<title>Stroboscope</title>
+
 <head>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 
-<style>
-  
-@keyframes blinking {
-  100% {
-    background-color: #fff;
+  <style>
+    @keyframes blinking {
+      100% {
+        background-color: #fff;
 
-  }
-  100% {
-    background-color: #000;
+      }
 
-  }
-}
+      100% {
+        background-color: #000;
 
-body {
+      }
+    }
 
-  /* NAME | TIME | ITERATION */
-  animation: blinking 0.36s infinite;
-  font-family: 'Roboto Mono', monospace;
-	  font-size: xx-large;
-}
-  
-.box.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    body {
 
-.box {
-  padding: .5rem;
-  height: 100vh;
+      /* NAME | TIME | ITERATION */
+      animation: blinking 0.36s infinite;
+      font-family: 'Roboto Mono', monospace;
+      font-size: xx-large;
+      margin: 0;
+    }
 
-}
+    .box.flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-.box p {
-  /*max-width: 300px;*/
-  text-align: center;
-  margin: .25rem;
-  padding: .25rem;
-}
+    .box {
+      padding: .5rem;
+      height: 100vh;
 
-</style>
+    }
+
+    .box p {
+      /*max-width: 300px;*/
+      text-align: center;
+      margin: .25rem;
+      padding: .25rem;
+    }
+
+    .strobo-color {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: none;
+      z-index: 1;
+      opacity: 0.3;
+    }
+
+    .active {
+      display: block;
+    }
+
+    button {
+      cursor: pointer;
+      z-index: 2;
+      backdrop-filter: blur(2px);
+      background-color: transparent;
+      border-radius: 9999px;
+      height: 3rem;
+      width: 3rem;
+      border: 3px solid rgb(255, 0, 234);
+      position: absolute;
+      bottom: 25%;
+      transition: all;
+      transition-duration: 200ms;
+      transition-timing-function: ease-in-out;
+    }
+
+    button:hover {
+      box-shadow: 0rem 0rem 4rem 4rem rgba(0255, 0, 234, 0.2);
+      background-color: rgb(255, 0, 234);
+
+    }
+  </style>
 </head>
+
 <body>
-  
-<div class="box flex">
-  <p>
-ZÄHNE PUTZEN, PULLERN UND AB INS BETT!
-  </p>
-</div>
-      
+  <div class="box flex">
+    <p>
+      ZÄHNE PUTZEN, PULLERN UND AB INS BETT!
+    </p>
+    <button class="colorBtn"></button>
+  </div>
+  <div class="strobo-color"></div>
+
+  <script>
+    const button = document.getElementsByClassName('colorBtn')[0];
+    const div = document.getElementsByClassName('strobo-color')[0];
+
+    button.addEventListener('click', function () {
+      div.classList.toggle('active');
+    });
+
+    setInterval(
+      function () {
+        const color = Math.floor(Math.random() * 16777215).toString(16);
+        div.style.backgroundColor = "#" + color;
+      }, 300);
+  </script>
 </body>
+
 </html>
